@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author 최성헌
  * @since JDK11
  */
-@RequestMapping("/sample/view")
+@RequestMapping("/view/sample")
 @Controller
 @Slf4j
 public class SampleViewController {

@@ -34,6 +34,9 @@ dependencies {
 	compile group: 'com.google.guava', name: 'guava', version: '28.2-jre'
 	compile group: 'org.apache.httpcomponents', name: 'fluent-hc', version: '4.5.11'
 
+	// swagger 관련 라이브러리
+	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+	compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
 
 }
 
