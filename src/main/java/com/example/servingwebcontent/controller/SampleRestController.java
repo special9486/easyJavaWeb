@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
  * @author 최성헌
  * @since JDK11
  */
-@RequestMapping("/api/sample")
+@RequestMapping("/api/example")
 @RestController()
 @Slf4j
 @Api(tags = {"예제용 API 목록"})
