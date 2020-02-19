@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--/*@thymesVar id="code" type="java.lang.String"*/-->
+<!--/*@thymesVar id="message" type="java.lang.String"*/-->
+    <div>This is error page</div>
+    <div>Error Code: <th:block th:text="${code}"/></div>
+    <div>Error message: <th:block th:text="${message}"/></div>
+</body>
+</html>

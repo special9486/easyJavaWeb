@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
  * @author 최성헌
  * @since JDK1.8
  */
-public class SampleControllerTests {
+public class SampleViewControllerTests {
     private Logger log = LoggerFactory.getLogger("Test");
 
     @Test

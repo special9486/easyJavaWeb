@@ -13,16 +13,19 @@ public class AppException extends Exception {
     private String exceptionMessage;
 
     public AppException() {
+        super(ResultCode.ETC_ERROR.getLogMsg());
         this.resultData = new ResultData(ResultCode.ETC_ERROR);
         this.exceptionMessage = ResultCode.ETC_ERROR.getLogMsg();
     }
 
     public AppException(ResultCode resultCode) {
+        super(resultCode.getLogMsg());
         this.resultData = new ResultData(resultCode);
         this.exceptionMessage = resultCode.getLogMsg();
     }
 
     public AppException(ResultCode resultCode, Object data) {
+        super(resultCode.getLogMsg());
         this.resultData = new ResultData(resultCode, data);
         this.exceptionMessage = resultCode.getLogMsg();
     }
