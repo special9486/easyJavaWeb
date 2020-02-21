@@ -1,13 +1,40 @@
+# 공통 프로퍼트 정보
 spring:
-  profiles:
-    active: local
+  profiles.active: local
+  jpa.hibernate.ddl-auto: update
+
+logging.level.org.hibernate:
+  SQL: DEBUG
+  type.descriptor.sql.BasicBinder: trace
+
 
 
 ---
+# Local 환경에 적용할 프로퍼티 정보
 spring:
   profiles: local
+  thymeleaf.cache: false
 
-  thymeleaf:
-    cache: false
+  datasource:
+    url: jdbc:mariadb://personal-test.cagwjntttyvl.ap-northeast-2.rds.amazonaws.com:3306/test
+    username: admin
+    password: test2020
+
+  jpa.properties.hibernate.format_sql: true
+
+
+
+---
+# 개발 서버에 적용할 프로퍼티 정보
+spring:
+  profiles: dev
+  thymeleaf.cache: true
+
+  datasource:
+    url: jdbc:mariadb://personal-test.cagwjntttyvl.ap-northeast-2.rds.amazonaws.com:3306/test
+    username: admin
+    password: test2020
+
+
 
 

@@ -10,7 +10,9 @@ public enum ResultCode {
 
     SUCCESS("0", "Success", "Success"),
 
-    ETC_ERROR("E01", "ETC Error", "일시적인 서비스 장애가 발생하였습니다.");
+    ETC_ERROR("E01", "ETC Error", "일시적인 서비스 장애가 발생하였습니다."),
+
+    NOT_FOUND("S01", "Data not found...", "데이터가 없습니다.");
 
     private String code;
 
