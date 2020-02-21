@@ -3,8 +3,10 @@ package com.example.servingwebcontent.controller;
 import com.example.servingwebcontent.commons.AppException;
 import com.example.servingwebcontent.commons.ResultCode;
 import com.example.servingwebcontent.commons.ResultData;
+import com.example.servingwebcontent.service.SampleService;
 import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -18,6 +20,12 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @Api(tags = {"예제용 API 목록"})
 public class SampleRestController {
+
+    private final SampleService sampleService;
+
+    public SampleRestController(SampleService sampleService) {
+        this.sampleService = sampleService;
+    }
 
     @GetMapping("/get")
     public ResultData sampleGet() {
@@ -73,5 +81,15 @@ public class SampleRestController {
     public ResultData samplePostWitHeader() {
         log.info("in samplePostWitHeader...");
         return new ResultData("use header api...");
+    }
+
+    @GetMapping("/get/getDbData")
+    @ApiOperation(value = "getDbData", notes = "Get Database sample data")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "userNo", value = "사용자 번호", dataType = "long", paramType = "query")
+    })
+    public ResultData getDbData(final Long userNo) throws Exception {
+        log.info("getDbData params => userNo[{}]", userNo);
+        return sampleService.getData(userNo);
     }
 }

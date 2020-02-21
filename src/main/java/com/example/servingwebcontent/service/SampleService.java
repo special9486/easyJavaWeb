@@ -3,6 +3,7 @@ package com.example.servingwebcontent.service;
 import com.example.servingwebcontent.commons.AppException;
 import com.example.servingwebcontent.commons.ResultCode;
 import com.example.servingwebcontent.commons.ResultData;
+import com.example.servingwebcontent.commons.utils.EasyMap;
 import com.example.servingwebcontent.database.entity.Sample;
 import com.example.servingwebcontent.database.entity.SampleDetail;
 import com.example.servingwebcontent.database.repository.SampleDetailRepository;
@@ -36,6 +37,17 @@ public class SampleService {
         log.info("Add Data No => {}", sample.getUserNo());
 
         return new ResultData(ResultCode.SUCCESS);
+    }
+
+    @Transactional
+    public ResultData getData(final Long userNo) throws Exception {
+        final Sample sample = this.getSampleAfterCheckHas(userNo);
+        final EasyMap easyMap = EasyMap.createInstance();
+        easyMap.put("userId", sample.getUserId());
+        easyMap.put("userNo", sample.getUserNo());
+        easyMap.put("userName", sample.getUserName());
+
+        return new ResultData(ResultCode.SUCCESS, easyMap.toMap());
     }
 
     @Transactional
