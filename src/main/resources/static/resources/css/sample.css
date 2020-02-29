@@ -1,0 +1,17 @@
+.title {
+    font-size: 3em;
+    margin: 0 auto;
+    text-align: center;
+}
+
+td {
+    border: 1px black solid;
+}
+
+.topNavi {
+    display: flex;
+}
+
+.topNavi div {
+    margin: 20px 20px;
+}

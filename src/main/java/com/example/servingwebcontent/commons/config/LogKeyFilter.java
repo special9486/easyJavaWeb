@@ -48,7 +48,9 @@ public class LogKeyFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        final String logKey = this.lastIpNumber + LocalDateTime.now().format(formatter) + UUID.randomUUID().toString().replace("-", "");
+        final String logKey = this.lastIpNumber + "_"
+                + LocalDateTime.now().format(formatter) + "_"
+                + UUID.randomUUID().toString().replace("-", "");
         MDC.put(logKeyName, logKey);
         filterChain.doFilter(request, response);
     }
