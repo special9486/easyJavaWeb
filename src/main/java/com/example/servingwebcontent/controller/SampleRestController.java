@@ -75,9 +75,6 @@ public class SampleRestController {
 
     @PostMapping("/post/header")
     @ApiOperation(value = "samplePostWitHeader", notes = "Post API With Header.")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "apiToken", value = "인증 토큰", dataType = "string", paramType = "header")
-    })
     public ResultData samplePostWitHeader() {
         log.info("in samplePostWitHeader...");
         return new ResultData("use header api...");
@@ -86,10 +83,29 @@ public class SampleRestController {
     @GetMapping("/get/getDbData")
     @ApiOperation(value = "getDbData", notes = "Get Database sample data")
     @ApiImplicitParams({
-        @ApiImplicitParam(name = "userNo", value = "사용자 번호", dataType = "long", paramType = "query")
+        @ApiImplicitParam(name = "userNo", value = "사용자 번호", dataType = "number", paramType = "query")
     })
     public ResultData getDbData(final Long userNo) throws Exception {
         log.info("getDbData params => userNo[{}]", userNo);
         return sampleService.getData(userNo);
+    }
+
+    @GetMapping("/get/waitingOneSecond")
+    @ApiOperation(value = "waitingOneSecond", notes = "Waiting one second for stress test")
+    public ResultData waitingOneSecond() throws Exception {
+        log.info("in waitingOneSecond...");
+        Thread.sleep(1000);
+        return new ResultData(ResultCode.SUCCESS);
+    }
+
+    @GetMapping("/get/waitingTwoSecond")
+    @ApiOperation(value = "waitingTwoSecond", notes = "Waiting two second for stress test")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "count", value = "호출 번호", dataType = "integer", paramType = "query")
+    })
+    public ResultData waitingTwoSecond(final Integer count) throws Exception {
+        log.info("in waitingTwoSecond: count[{}]", count);
+        Thread.sleep(2000);
+        return new ResultData(ResultCode.SUCCESS, count);
     }
 }
